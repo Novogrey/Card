@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novogrey — Personal Card</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="images/discord-server.png">
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="top-controls">
+    <button onclick="setLanguage('ru')">🇷🇺</button>
+    <button onclick="setLanguage('en')">🇬🇧</button>
+    <button onclick="setLanguage('de')">🇩🇪</button>
+    <button onclick="setLanguage('uk')">🇺🇦</button>
+</div>
+
+<main class="page">
+    <div class="card fade-in">
+
+        <img src="images/avatar.jpg" class="avatar" alt="Novogrey">
+
+        <h1>Novogrey</h1>
+
+        <h2 class="fade-text"
+           data-ru="Навыки и интересы"
+           data-en="Skills & Interests"
+           data-de="Fähigkeiten & Interessen"
+           data-uk="Навички та інтереси">
+        </h2>
+
+        <div class="skills">
+            <div class="skill" data-ru="HTML / CSS" data-en="HTML / CSS" data-de="HTML / CSS" data-uk="HTML / CSS">HTML / CSS</div>
+            <div class="skill" data-ru="JavaScript" data-en="JavaScript" data-de="JavaScript" data-uk="JavaScript">JavaScript</div>
+            <div class="skill" data-ru="Python" data-en="Python" data-de="Python" data-uk="Python">Python</div>
+            <div class="skill" data-ru="Изучаю языки программирования" data-en="Studying programming languages" data-de="Lerne Programmiersprachen" data-uk="Вивчаю мови програмування">Изучаю языки программирования</div>
+            <div class="skill" data-ru="Ядерные реакторы" data-en="Nuclear reactors" data-de="Kernreaktoren" data-uk="Ядерні реактори">Ядерные реакторы</div>
+            <div class="skill" data-ru="Создание и настройка Discord серверов" data-en="Creating & configuring Discord servers" data-de="Erstellung & Konfiguration von Discord-Servern" data-uk="Створення та налаштування Discord серверів">Создание и настройка Discord серверов</div>
+            <div class="skill" data-ru="Создание и настройка Telegram каналов и ботов" data-en="Creating & configuring Telegram channels & bots" data-de="Erstellung & Konfiguration von Telegram-Kanälen und Bots" data-uk="Створення та налаштування Telegram каналів і ботів">Создание и настройка Telegram каналов и ботов</div>
+            <div class="skill" data-ru="7 лет опыта в администрировании и модерировании крупных проектов" data-en="7 years experience in administration & moderation of large projects" data-de="7 Jahre Erfahrung in Administration & Moderation großer Projekte" data-uk="7 років досвіду адміністрування та модерування великих проєктів">7 лет опыта в администрировании и модерировании крупных проектов</div>
+            <div class="skill" data-ru="5 лет опыта технического администрирования" data-en="5 years experience in technical administration" data-de="5 Jahre Erfahrung in technischer Administration" data-uk="5 років досвіду технічного адміністрування">5 лет опыта технического администрирования</div>
+        </div>
+
+        <h2 class="fade-text"
+           data-ru="Контакты"
+           data-en="Contact"
+           data-de="Kontakt"
+           data-uk="Контакти">
+        </h2>
+
+        <div class="chip contact-chip">
+            <p data-ru="Связаться со мной можно только через Discord."
+               data-en="You can contact me only via Discord."
+               data-de="Kontaktieren Sie mich nur über Discord."
+               data-uk="Зв'язатися зі мною можна лише через Discord.">
+               Связаться со мной можно <b>только через Discord</b>.
+            </p>
+            <p data-ru="В других мессенджерах я не отвечаю незнакомым людям."
+               data-en="In other messengers I do not respond to strangers."
+               data-de="In anderen Messengern antworte ich unbekannten Personen nicht."
+               data-uk="В інших месенджерах я не відповідаю незнайомцям.">
+               В других мессенджерах я <b>не отвечаю</b> незнакомым людям.
+            </p>
+            <p data-ru="При вопросах по серверу обращайтесь в #〔🎫〕tickets."
+               data-en="For server questions, contact #〔🎫〕tickets."
+               data-de="Bei Serverfragen wenden Sie sich an #〔🎫〕tickets."
+               data-uk="З питаннями по серверу звертайтеся до #〔🎫〕tickets.">
+               При вопросах по серверу обращайтесь в <a href="https://discord.com/channels/1451626981803298890/1452666646912307240" target="_blank">#〔🎫〕tickets</a>.
+            </p>
+            <p data-ru="✅ Хорошо: Привет, у меня есть проблема. Не мог бы ты помочь?"
+               data-en="✅ Good: Hi, I have a problem. Could you help me?"
+               data-de="✅ Gut: Hallo, ich habe ein Problem. Könnten Sie helfen?"
+               data-uk="✅ Добре: Привіт, у мене є проблема. Чи міг би ти допомогти?">
+               ✅ Хорошо: Привет, у меня есть проблема. Не мог бы ты помочь?
+            </p>
+            <p data-ru="❌ Плохо: Привет → пауза → У меня проблема"
+               data-en="❌ Bad: Hi → (pause) → I have a problem"
+               data-de="❌ Schlecht: Hallo → (Pause) → Ich habe ein Problem"
+               data-uk="❌ Погано: Привіт → (пауза) → У мене проблема">
+               ❌ Плохо: Привет → пауза → У меня проблема
+            </p>
+        </div>
+
+        <h2 class="fade-text"
+           data-ru="Ссылки"
+           data-en="Links"
+           data-de="Links"
+           data-uk="Посилання">
+        </h2>
+
+        <div class="links">
+            <a href="https://truckersmp.com/vtc/76924" target="_blank"
+            data-ru="TruckersMP"
+            data-en="TruckersMP"
+            data-de="TruckersMP"
+            data-uk="TruckersMP">TruckersMP</a>
+
+            <a href="https://discord.gg/YF8krDPCZh" target="_blank"
+            data-ru="Discord Server"
+            data-en="Discord Server"
+            data-de="Discord Server"
+            data-uk="Discord Server">Discord Server</a>
+
+            <a href="https://discord.com/users/742304453608079370" target="_blank"
+            data-ru="Discord"
+            data-en="Discord"
+            data-de="Discord"
+            data-uk="Discord">Discord</a>
+
+            <a href="https://www.roblox.com/users/2289511489/profile" target="_blank"
+            data-ru="Roblox"
+            data-en="Roblox"
+            data-de="Roblox"
+            data-uk="Roblox">Roblox</a>
+
+            <a href="https://t.me/brekc" target="_blank"
+            data-ru="Telegram"
+            data-en="Telegram"
+            data-de="Telegram"
+            data-uk="Telegram">Telegram</a>
+
+            <a href="https://steamcommunity.com/profiles/76561199150928998/" target="_blank"
+            data-ru="Steam"
+            data-en="Steam"
+            data-de="Steam"
+            data-uk="Steam">Steam</a>
+        </div>
+
+
+    </div>
+<script src="script.js"></script>
+</main>
+</body>
+</html>
