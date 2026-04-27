@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b10">
 <title>Novogrey — Personal Card</title>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="images/discord-server.png">
@@ -12,18 +13,63 @@
 <canvas id="bg"></canvas>
 
 <div class="top-controls">
-    <button onclick="setLanguage('ru')">🇷🇺</button>
-    <button onclick="setLanguage('en')">🇬🇧</button>
-    <button onclick="setLanguage('de')">🇩🇪</button>
-    <button onclick="setLanguage('uk')">🇺🇦</button>
+    <button type="button" data-lang="ru" aria-label="Русский" aria-pressed="false" onclick="setLanguage('ru')">🇷🇺</button>
+    <button type="button" data-lang="en" aria-label="English" aria-pressed="false" onclick="setLanguage('en')">🇬🇧</button>
+    <button type="button" data-lang="de" aria-label="Deutsch" aria-pressed="false" onclick="setLanguage('de')">🇩🇪</button>
+    <button type="button" data-lang="uk" aria-label="Українська" aria-pressed="false" onclick="setLanguage('uk')">🇺🇦</button>
 </div>
 
 <main class="page">
     <div class="card fade-in">
 
-        <img src="images/avatar.jpg" class="avatar" alt="Novogrey">
+        <img src="images/avatar.jpg" class="avatar" alt="Novogrey" decoding="async">
 
         <h1>Novogrey</h1>
+
+        <h2 class="fade-text"
+           data-ru="Ссылки"
+           data-en="Links"
+           data-de="Links"
+           data-uk="Посилання">
+        </h2>
+
+        <div class="links">
+            <a href="https://truckersmp.com/vtc/76924" target="_blank" rel="noopener noreferrer"
+            data-ru="TruckersMP"
+            data-en="TruckersMP"
+            data-de="TruckersMP"
+            data-uk="TruckersMP">TruckersMP</a>
+
+            <a href="https://discord.gg/YF8krDPCZh" target="_blank" rel="noopener noreferrer"
+            data-ru="Discord Server"
+            data-en="Discord Server"
+            data-de="Discord Server"
+            data-uk="Discord Server">Discord Server</a>
+
+            <a href="https://discord.com/users/742304453608079370" target="_blank" rel="noopener noreferrer"
+            data-ru="Discord"
+            data-en="Discord"
+            data-de="Discord"
+            data-uk="Discord">Discord</a>
+
+            <a href="https://www.roblox.com/users/2289511489/profile" target="_blank" rel="noopener noreferrer"
+            data-ru="Roblox"
+            data-en="Roblox"
+            data-de="Roblox"
+            data-uk="Roblox">Roblox</a>
+
+            <a href="https://t.me/brekc" target="_blank" rel="noopener noreferrer"
+            data-ru="Telegram"
+            data-en="Telegram"
+            data-de="Telegram"
+            data-uk="Telegram">Telegram</a>
+
+            <a href="https://steamcommunity.com/profiles/76561199150928998/" target="_blank" rel="noopener noreferrer"
+            data-ru="Steam"
+            data-en="Steam"
+            data-de="Steam"
+            data-uk="Steam">Steam</a>
+        </div>
 
         <h2 class="fade-text"
            data-ru="Навыки и интересы"
@@ -37,11 +83,24 @@
             <div class="skill" data-ru="JavaScript" data-en="JavaScript" data-de="JavaScript" data-uk="JavaScript">JavaScript</div>
             <div class="skill" data-ru="Python" data-en="Python" data-de="Python" data-uk="Python">Python</div>
             <div class="skill" data-ru="Изучаю языки программирования" data-en="Studying programming languages" data-de="Lerne Programmiersprachen" data-uk="Вивчаю мови програмування">Изучаю языки программирования</div>
-            <div class="skill" data-ru="Ядерные реакторы" data-en="Nuclear reactors" data-de="Kernreaktoren" data-uk="Ядерні реактори">Ядерные реакторы</div>
             <div class="skill" data-ru="Создание и настройка Discord серверов" data-en="Creating & configuring Discord servers" data-de="Erstellung & Konfiguration von Discord-Servern" data-uk="Створення та налаштування Discord серверів">Создание и настройка Discord серверов</div>
             <div class="skill" data-ru="Создание и настройка Telegram каналов и ботов" data-en="Creating & configuring Telegram channels & bots" data-de="Erstellung & Konfiguration von Telegram-Kanälen und Bots" data-uk="Створення та налаштування Telegram каналів і ботів">Создание и настройка Telegram каналов и ботов</div>
             <div class="skill" data-ru="7 лет опыта в администрировании и модерировании крупных проектов" data-en="7 years experience in administration & moderation of large projects" data-de="7 Jahre Erfahrung in Administration & Moderation großer Projekte" data-uk="7 років досвіду адміністрування та модерування великих проєктів">7 лет опыта в администрировании и модерировании крупных проектов</div>
             <div class="skill" data-ru="5 лет опыта технического администрирования" data-en="5 years experience in technical administration" data-de="5 Jahre Erfahrung in technischer Administration" data-uk="5 років досвіду технічного адміністрування">5 лет опыта технического администрирования</div>
+        </div>
+
+        <h2 class="fade-text"
+           data-ru="Языки"
+           data-en="Languages"
+           data-de="Sprachen"
+           data-uk="Мови">
+        </h2>
+
+        <div class="languages">
+            <div class="language" data-ru="Английский" data-en="English" data-de="Englisch" data-uk="Англійська">Английский</div>
+            <div class="language" data-ru="Русский" data-en="Russian" data-de="Russisch" data-uk="Російська">Русский</div>
+            <div class="language" data-ru="Украинский" data-en="Ukrainian" data-de="Ukrainisch" data-uk="Українська">Украинский</div>
+            <div class="language" data-ru="Немецкий" data-en="German" data-de="Deutsch" data-uk="Німецька">Немецкий</div>
         </div>
 
         <h2 class="fade-text"
@@ -68,7 +127,7 @@
                data-en="For server questions, contact #〔🎫〕tickets."
                data-de="Bei Serverfragen wenden Sie sich an #〔🎫〕tickets."
                data-uk="З питаннями по серверу звертайтеся до #〔🎫〕tickets.">
-               При вопросах по серверу обращайтесь в <a href="https://discord.com/channels/1451626981803298890/1452666646912307240" target="_blank">#〔🎫〕tickets</a>.
+               При вопросах по серверу обращайтесь в <a href="https://discord.com/channels/1451626981803298890/1452666646912307240" target="_blank" rel="noopener noreferrer">#〔🎫〕tickets</a>.
             </p>
             <p data-ru="✅ Хорошо: Привет, у меня есть проблема. Не мог бы ты помочь?"
                data-en="✅ Good: Hi, I have a problem. Could you help me?"
@@ -84,54 +143,51 @@
             </p>
         </div>
 
-        <h2 class="fade-text"
-           data-ru="Ссылки"
-           data-en="Links"
-           data-de="Links"
-           data-uk="Посилання">
-        </h2>
+    </div>
+</main>
 
-        <div class="links">
-            <a href="https://truckersmp.com/vtc/76924" target="_blank"
-            data-ru="TruckersMP"
-            data-en="TruckersMP"
-            data-de="TruckersMP"
-            data-uk="TruckersMP">TruckersMP</a>
+<audio id="site-audio" preload="metadata"></audio>
 
-            <a href="https://discord.gg/YF8krDPCZh" target="_blank"
-            data-ru="Discord Server"
-            data-en="Discord Server"
-            data-de="Discord Server"
-            data-uk="Discord Server">Discord Server</a>
+<section class="music-player" id="music-player" aria-label="Музыкальный плеер">
+    <button type="button" class="music-drawer-toggle" id="music-drawer-toggle" aria-label="Открыть музыкальный плеер" aria-expanded="false">♫</button>
 
-            <a href="https://discord.com/users/742304453608079370" target="_blank"
-            data-ru="Discord"
-            data-en="Discord"
-            data-de="Discord"
-            data-uk="Discord">Discord</a>
-
-            <a href="https://www.roblox.com/users/2289511489/profile" target="_blank"
-            data-ru="Roblox"
-            data-en="Roblox"
-            data-de="Roblox"
-            data-uk="Roblox">Roblox</a>
-
-            <a href="https://t.me/brekc" target="_blank"
-            data-ru="Telegram"
-            data-en="Telegram"
-            data-de="Telegram"
-            data-uk="Telegram">Telegram</a>
-
-            <a href="https://steamcommunity.com/profiles/76561199150928998/" target="_blank"
-            data-ru="Steam"
-            data-en="Steam"
-            data-de="Steam"
-            data-uk="Steam">Steam</a>
+    <div class="music-drawer" id="music-drawer">
+        <div class="music-track">
+            <div class="music-cover" id="music-cover" aria-hidden="true">NG</div>
+            <div class="music-copy">
+                <p class="music-title" id="music-title">Загрузка музыки</p>
+                <p class="music-artist" id="music-artist">audio</p>
+            </div>
         </div>
 
+        <div class="music-main">
+            <div class="music-buttons">
+                <button type="button" class="music-icon" id="shuffle-button" aria-label="Случайный порядок" aria-pressed="true">⤨</button>
+                <button type="button" class="music-icon" id="prev-button" aria-label="Предыдущий трек">⏮</button>
+                <button type="button" class="music-icon play-button" id="play-button" aria-label="Воспроизвести">▶</button>
+                <button type="button" class="music-icon" id="next-button" aria-label="Следующий трек">⏭</button>
+                <button type="button" class="music-icon" id="repeat-button" aria-label="Повтор" aria-pressed="false">↻</button>
+            </div>
 
+            <div class="music-progress">
+                <span id="current-time">0:00</span>
+                <input id="track-progress" type="range" min="0" max="0" value="0" step="0.1" aria-label="Позиция трека" disabled>
+                <span id="duration-time">0:00</span>
+            </div>
+        </div>
+
+        <div class="music-settings">
+            <p class="music-status" id="music-status">0 / 0</p>
+            <button type="button" class="music-icon" id="playlist-button" aria-label="Плейлист" aria-expanded="false">☰</button>
+            <button type="button" class="music-icon" id="mute-button" aria-label="Выключить звук">🔊</button>
+            <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Громкость">
+        </div>
+
+        <div class="music-playlist" id="music-playlist" hidden></div>
     </div>
+</section>
+
+<script src="audio/tracks.js"></script>
 <script src="script.js"></script>
-</main>
 </body>
 </html>
