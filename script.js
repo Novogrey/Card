@@ -161,6 +161,7 @@ const AUDIO_FOLDER = "audio";
 const AUDIO_EXTENSIONS = [".mp3", ".wav", ".ogg", ".m4a", ".aac", ".flac", ".webm"];
 const DEFAULT_VOLUME = 0.5;
 const VOLUME_STORAGE_KEY = "musicVolumeV3";
+const PLAYLIST_ANIMATION_MS = 320;
 const audioEl = document.getElementById("site-audio");
 const musicPlayer = document.getElementById("music-player");
 const musicDrawerToggle = document.getElementById("music-drawer-toggle");
@@ -187,6 +188,7 @@ let shuffleEnabled = true;
 let repeatMode = "all";
 let isSeeking = false;
 let autoplayBlocked = false;
+let playlistCloseTimer = null;
 
 function isAudioFile(file) {
     const lower = file.toLowerCase();
@@ -299,6 +301,28 @@ function setMusicDrawerOpen(isOpen) {
     musicPlayer.classList.toggle("is-open", isOpen);
     musicDrawerToggle.setAttribute("aria-expanded", String(isOpen));
     musicDrawerToggle.setAttribute("aria-label", isOpen ? "Закрыть музыкальный плеер" : "Открыть музыкальный плеер");
+}
+
+function setPlaylistOpen(isOpen) {
+    window.clearTimeout(playlistCloseTimer);
+    playlistButton.setAttribute("aria-expanded", String(isOpen));
+
+    if (isOpen) {
+        playlistPanel.hidden = false;
+        playlistPanel.setAttribute("aria-hidden", "false");
+        window.requestAnimationFrame(() => {
+            playlistPanel.classList.add("is-open");
+        });
+        return;
+    }
+
+    playlistPanel.classList.remove("is-open");
+    playlistPanel.setAttribute("aria-hidden", "true");
+    playlistCloseTimer = window.setTimeout(() => {
+        if (!playlistPanel.classList.contains("is-open")) {
+            playlistPanel.hidden = true;
+        }
+    }, PLAYLIST_ANIMATION_MS);
 }
 
 function updateShuffleButton() {
@@ -448,8 +472,7 @@ function renderPlaylist() {
         button.append(title, artist);
         button.addEventListener("click", () => {
             loadTrack(index, { play: true });
-            playlistPanel.hidden = true;
-            playlistButton.setAttribute("aria-expanded", "false");
+            setPlaylistOpen(false);
         });
 
         playlistPanel.appendChild(button);
@@ -534,8 +557,7 @@ repeatButton.addEventListener("click", () => {
 });
 
 playlistButton.addEventListener("click", () => {
-    playlistPanel.hidden = !playlistPanel.hidden;
-    playlistButton.setAttribute("aria-expanded", String(!playlistPanel.hidden));
+    setPlaylistOpen(!playlistPanel.classList.contains("is-open"));
 });
 
 muteButton.addEventListener("click", () => {
@@ -570,9 +592,8 @@ audioEl.addEventListener("volumechange", updateVolumeButton);
 audioEl.addEventListener("ended", () => nextTrack({ fromEnded: true }));
 
 document.addEventListener("click", (event) => {
-    if (!playlistPanel.hidden && !musicPlayer.contains(event.target)) {
-        playlistPanel.hidden = true;
-        playlistButton.setAttribute("aria-expanded", "false");
+    if (playlistPanel.classList.contains("is-open") && !musicPlayer.contains(event.target)) {
+        setPlaylistOpen(false);
     }
 
     if (musicPlayer.classList.contains("is-open") && !musicPlayer.contains(event.target)) {
@@ -583,8 +604,7 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && musicPlayer.classList.contains("is-open")) {
         setMusicDrawerOpen(false);
-        playlistPanel.hidden = true;
-        playlistButton.setAttribute("aria-expanded", "false");
+        setPlaylistOpen(false);
     }
 });
 
