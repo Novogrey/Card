@@ -178,9 +178,9 @@ h1 {
 
 h2 {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     margin-top: 12px;
     color: var(--text);
@@ -192,12 +192,14 @@ h2 {
 h2::before,
 h2::after {
     content: "";
+    flex: 1 1 0;
+    min-width: 46px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24));
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34));
 }
 
 h2::after {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.34), transparent);
 }
 
 .skills,
