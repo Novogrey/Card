@@ -159,6 +159,8 @@ setLanguage(currentLang);
 
 const AUDIO_FOLDER = "audio";
 const AUDIO_EXTENSIONS = [".mp3", ".wav", ".ogg", ".m4a", ".aac", ".flac", ".webm"];
+const DEFAULT_VOLUME = 0.5;
+const VOLUME_STORAGE_KEY = "musicVolumeV3";
 const audioEl = document.getElementById("site-audio");
 const musicPlayer = document.getElementById("music-player");
 const musicDrawerToggle = document.getElementById("music-drawer-toggle");
@@ -456,16 +458,21 @@ function renderPlaylist() {
 
 function readSavedVolume() {
     try {
-        const saved = Number(localStorage.getItem("musicVolumeV2"));
-        return Number.isFinite(saved) ? Math.min(1, Math.max(0, saved)) : 0.5;
+        localStorage.removeItem("musicVolume");
+        localStorage.removeItem("musicVolumeV2");
+
+        const saved = Number(localStorage.getItem(VOLUME_STORAGE_KEY));
+        if (!Number.isFinite(saved) || saved <= 0) return DEFAULT_VOLUME;
+
+        return Math.min(1, Math.max(DEFAULT_VOLUME, saved));
     } catch {
-        return 0.5;
+        return DEFAULT_VOLUME;
     }
 }
 
 function saveVolume(value) {
     try {
-        localStorage.setItem("musicVolumeV2", String(value));
+        localStorage.setItem(VOLUME_STORAGE_KEY, String(value));
     } catch {
         // Local storage can be unavailable in private or local-file contexts.
     }
@@ -476,6 +483,7 @@ async function initMusicPlayer() {
 
     setControlsDisabled(true);
     audioEl.volume = readSavedVolume();
+    audioEl.muted = false;
     volumeInput.value = String(audioEl.volume);
     updateVolumeButton();
     updateShuffleButton();
